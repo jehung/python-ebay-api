@@ -1,0 +1,137 @@
+
+			LOG of Changes of PypeR
+
+
+Changes from PypeR-1.1.1 to PypeR-1.1.2:
+    on Wed Mar 26 10:32:36 HKT 2014
+
+    1. fixed the problem that PypeR cannot convert NaN in Pandas to R NaN. (This bug was found by Brent Pedersen)
+
+    2. fixed the problem in dealing with empty data.frame. (This bug was found and solved by Brent Pedersen)
+
+    3. All R data frame will be converted to numpy.array, then to pandas DataFrame (and no Series any more).
+    
+    4. add dump_stdout to output raw string made by PypeR, this is useful for debugging. (This option is introduced by Uwe Schmitt)
+
+    5. Most importantly: solve the bug in passing quotes from R to Python.
+
+
+Changes from PypeR-1.1.0 to PypeR-1.1.1:
+
+	on Wed Oct 10 11:07:27 CST 2012
+
+	1. Added support to Pandas Series and DataFrame. (Thanks Joost Delsman very
+		much for providing codes for this purpose!)
+	
+	2. Addressed some compatibility problems for Python 2.7 on Windows. (Many
+		users provided helps!)
+
+	3. Addressed a potential problem related to one-element tuple in conversion
+		of R data frames to Python objects. (Thank Matt Knox for point this out
+		and provide a solution.) 
+
+	4. Addressed the row-column confusion in conversion of R arrays to Python
+		objects.
+
+	5. Added supports to some special data, e.g. NaN and Inf.
+
+	6. More clear codes for test (in test.py).
+
+
+Changes from PypeR-1.0.4 to PypeR-1.1.0:
+
+	on Mon Sep 13 14:22:47 PDT 2010
+
+	1. Removed the module "pipeio.py" (the modification to the subprocess
+		package by Josiah Carlson). Therefore, the package "pywin32" is no
+		longer need on Windows.
+
+	2. Comparing to PypeR-1.0.X, which can only run with Python-2.X.X (>= 2.4),
+		now PypeR runs with Python 2.X.X (>= 2.3), Python 3.X.X, Jython, and
+		IronPython.
+
+	3. The parameters "wait0" and "wait" have been cancelled for the "R" class
+		and the "runR" function. Now R can be initialized a little faster.
+
+
+Changes from PypeR-1.0.3 to PypeR-1.0.4:
+
+	on Thu Sep  9 09:53:05 PDT 2010
+
+	1. Fixed the bug in parsing R command with backslash or space in the PATH -
+		now the following code works:
+
+		>>> r = R(RCMD="C:\\Program Files\\R\\R-2.X.X\\bin\\R")
+
+
+Changes from PypeR-1.0.2 to PypeR-1.0.3:
+
+	on Fri Sep  3 16:30:12 PDT 2010:
+
+	1. Fixed the bug in passing R values to Python which happens on Windows
+		aftersome library (e.g. "fastICA") change newline from '\r\n' to '\n'.
+
+	2. Fixed the bug in passing R values with the backslash character ('\') to
+		Python.
+
+	3. Fixed the bug on Windows in parsing user library for R.
+
+	4. change the default value for parameter "use_dict". Now "use_dict" can be
+		one of the three values: None, True, False. None is the default value,
+		which allows a Python dictionary returned for R named list without
+		replicated name, or a Python list if replicated names exist. Here is
+		some examples:
+
+		>>> from pyper import *
+		>>> r = R() # the default value for use_dict is None
+		>>> r('a <- list(aa=3, bb=4, cc=5, aa=6)') # with replicated name "aa"
+		'try({a <- list(aa=3, bb=4, cc=5, aa=6)})\r\n'
+		>>> r.a
+		[('aa', 3), ('bb', 4), ('cc', 5), ('aa', 6)]
+		>>> r.get('a', use_dict=False)
+		[('aa', 3), ('bb', 4), ('cc', 5), ('aa', 6)]
+		>>> r.get('a', use_dict=True)
+		{'aa': 6, 'cc': 5, 'bb': 4}
+		>>> r.use_dict = True # change the default value from None to True
+		>>> r.a
+		{'aa': 6, 'cc': 5, 'bb': 4}
+		>>> r.get('a')
+		{'aa': 6, 'cc': 5, 'bb': 4}
+		>>> r.get('a', use_dict=False)
+		[('aa', 3), ('bb', 4), ('cc', 5), ('aa', 6)]
+		>>> r.get('a', use_dict=None) # "None" here means that r.use_dict should be used!
+		{'aa': 6, 'cc': 5, 'bb': 4}
+		>>> r.use_dict = None # recover the default value
+		>>> r.a
+		[('aa', 3), ('bb', 4), ('cc', 5), ('aa', 6)]
+
+
+Changes from PypeR-1.0.1 to PypeR-1.0.2:
+
+	on Fri Sep 3 2010:
+
+	1. Fix bugs in converting logical data in R to Python
+
+	2. R Objects other than factor, NULL, vector, matrix, data.frame, or list,
+		will be converted to character using the function as.character
+	
+	3. add the optional parameter "use_dict" for the R class and for the "get"
+		method of the R class.
+
+
+Changes from PypeR-1.0 to PypeR-1.0.1:
+
+	1. Redict stderr to stdout for R. This can be disabled by setting
+		"return_err=False" when initialize a R instance, e.g., 
+		"r = R(return_err=False)"
+
+	2. In order that user settings can be used by R, R is launched with
+		arguments "--quiet --no-save --no-restore" instead of "--vanilla",
+		which equal to "--no-save --no-restore --no-site-file --no-init-file
+		--no-environ".
+
+	3. A version variable is added for the module: __version__ = 1.01
+
+	4. Suppressed the popup terminal window on Windows.
+
+	5. Added the user-specific library PATH in IDLE on Windows.

@@ -1,0 +1,34 @@
+# eBay SDK Defaults
+
+name: ebay_api_config
+
+# Trading API Sandbox - https://www.x.com/developers/ebay/products/trading-api
+api.sandbox.ebay.com:
+    compatability: 719
+    appid: "JennyHun-8887-4e0f-8b34-5402e3e70226"
+    certid: "18c2145b-77b6-46d8-9e1a-c6d8db75035f"
+    devid: "32bd78f0-7903-480e-9fcf-c251472b2fd6"
+    token: ENTER_YOUR_TOKEN_HERE
+
+# Trading API - https://www.x.com/developers/ebay/products/trading-api
+api.ebay.com:
+    version: 719
+    appid: "JennyHun-7ae2-4c50-abd7-3c1af9cedea5"
+    certid: "18c2145b-77b6-46d8-9e1a-c6d8db75035f"
+    devid: "32bd78f0-7903-480e-9fcf-c251472b2fd6"
+    token: "AgAAAA**AQAAAA**aAAAAA**fyKFVA**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wHkIajD5CFpw+dj6x9nY+seQ**Q5kCAA**AAMAAA**hh7z3x2YGqia4Ns+XqQTJ5EFVpritj8IFTZsl4ILKqtYfQWiLn15VtTJxropuMy5CeDbKBkkgRBLAZ/cUFMUcQyJ+1Q0YWx1VmOFkEMYMNfz2d2279m+gxGxBYFf07HXZls+ILCK/VcDCJEyq/Xbjgx7pgl3IpfNgdrV4KbVXBGTa5fBF6HRR+Cf+J7tFoJ45xOeNd2Uv1juVxdkYLdXYyAwRedFHHpd20qq2EXln3Wk3P0Ey2t95azG/F0R2CQSNuAKXmsC2lKaAgWj0wCtEYFqCzj/1zdASsLcQUK5VeUkeF3uYNNWkvkeYXZ88uyjhtKAe8loHjo/AUoMA2htFWNsm+/bWtbgWwBz/2+XcNNN88sClPEVq+UGaZ9WRyAhTOMMUijyEN5XrGUC600+O6QMGuIP424/e9F4d6VvvU7H34ELuqmamTvSnsC8zzCZcycfhHJQJURH+48cX+ge/YORJZWjN1TpUiS+Fx2392tRmeoIAiYPQVd4okszlzI0hgJ7KID44R21L2QWZr7s78q/0dljdSy/tvewLQwa8hUHeucn0Hp/stNWTFT4urKfLStoV/YFzvKg1PQT/Pw1d/AXHk+P84bx57Hl0HVgP1KHnLxT3RNVHQlZiHXTevtk6Vo68TzfZ4BbhSFsuMrcaArmm2twA6ykF9SKyptTNFmL+TolQ02F2iqXRiYNHGAzbCc/baa9+iVtjkvrL3HS1RNXLKOuhyNR0qaFS6CCynQSj3ESdF2VdEVA2MTQGsW3"
+
+# Finding API - https://www.x.com/developers/ebay/products/finding-api
+svcs.ebay.com:
+    appid: JennyHun-7ae2-4c50-abd7-3c1af9cedea5
+    version: 1.0.0
+
+# Shopping API - https://www.x.com/developers/ebay/products/shopping-api
+open.api.ebay.com:
+    appid: JennyHun-7ae2-4c50-abd7-3c1af9cedea5
+    version: 671
+
+    # Optional affiliate tracking
+    # http://developer.ebay.com/DevZone/shopping/docs/Concepts/ShoppingAPI_FormatOverview.html#StandardURLParameters
+    trackingid: ENTER_YOUR_TRACKINGID_HERE
+    trackingpartnercode: ENTER_YOUR_PARTNERCODE_HERE 
